@@ -1,0 +1,50 @@
+.wrapper {
+    width: 600px;
+    margin: 20px auto;
+    padding-bottom: 40px;
+}
+
+.container {
+    margin: 10px;
+}
+
+.OnOff {
+    position: relative;
+    padding-left: 50px;
+}
+
+.toggle {
+    text-align: center;
+    width: 50px;
+    height: 30px;
+    background-color: white;
+    border: 2px solid black;
+}
+
+.toggle.on{
+    color: white;
+    background-color: darkseagreen;
+}
+.toggle.on::before {
+    position: absolute;
+    content: "";
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    left: 15px;
+    background-color: darkseagreen;
+}
+.toggle.off{
+    color: white;
+    background-color: indianred;
+}
+
+.toggle.off::before {
+    position: absolute;
+    content: "";
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    left: 15px;
+    background-color: indianred;
+}
