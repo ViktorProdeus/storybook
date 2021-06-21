@@ -16,6 +16,8 @@ export const OnOff: React.FC<OnOffType> = (props) => {
         border: '1px solid black',
         display: 'inline-block',
         backgroundColor: props.on ? 'green' : 'white',
+        color: props.on ? 'white' : 'black',
+        cursor: 'pointer'
     }
 
     const offStyle = {
@@ -25,7 +27,9 @@ export const OnOff: React.FC<OnOffType> = (props) => {
         border: '1px solid black',
         display: 'inline-block',
         marginLeft: '2px',
-        backgroundColor: !props.on ? 'red' : 'white'
+        backgroundColor: !props.on ? 'red' : 'white',
+        color: !props.on ? 'white' : 'black',
+        cursor: 'pointer'
     }
 
     const indicatorStyle = {
