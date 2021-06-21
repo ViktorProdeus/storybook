@@ -7,11 +7,11 @@ import {UnControlledRating} from "./components/UnControlledRating/UnControlledRa
 import {Rating, RatingValueType} from "./components/Rating/Rating";
 import {UnControlledOnOff} from "./components/UnControlledOnOff/UnControlledOnOff";
 
-function App() {
+function App(props: any) {
     console.log('App rendering');
     let [ratingValue, setRatingValue] = useState<RatingValueType>(3);
     let [accordionCollapsed, setAccordionCollapsed] = useState<boolean>(false);
-    let [toggle, setToggle] = useState(true);
+    let [switchOn, setSwitchOn] = useState<boolean>(false)
 
     return (
         <div className={'wrapper'}>
@@ -21,7 +21,7 @@ function App() {
                 onClick={setAccordionCollapsed}
             />
             <Rating value={ratingValue} onClick={setRatingValue}/>
-            <OnOff toggle={toggle} onClick={setToggle}/>
+            <OnOff on={switchOn} onChange={setSwitchOn}/>
 
             <UnControlledOnOff/>
             <UnControlledAccordion/>

@@ -1,27 +1,48 @@
 import React from "react";
 
-type OnOffType = {
-    toggle: boolean
-    onClick: (value: boolean) => void
+export type OnOffType = {
+    on: boolean
+    onChange: (on: boolean) => void
 }
 
 export const OnOff: React.FC<OnOffType> = (props) => {
     console.log('OnOff rendering');
 
-    const isOnClass = props.toggle ? 'toggle on' : 'toggle';
-    const isOffClass = props.toggle ? 'toggle' : 'toggle off';
-    const isOn = true;
-    const isOff = false;
 
+    const onStyle = {
+        padding: '8px',
+        width: '20px',
+        height: '20px',
+        border: '1px solid black',
+        display: 'inline-block',
+        backgroundColor: props.on ? 'green' : 'white',
+    }
 
+    const offStyle = {
+        padding: '8px',
+        width: '20px',
+        height: '20px',
+        border: '1px solid black',
+        display: 'inline-block',
+        marginLeft: '2px',
+        backgroundColor: !props.on ? 'red' : 'white'
+    }
+
+    const indicatorStyle = {
+        width: '10px',
+        height: '10px',
+        borderRadius: '50%',
+        border: '1px solid black',
+        display: 'inline-block',
+        marginLeft: '5px',
+        backgroundColor: props.on ? 'green' : 'red'
+    }
 
     return (
-        <>
-            <p>TOGGLE --- Controlled</p>
-            <div className={"OnOff"}>
-                <button onClick={() => props.onClick(isOn)} className={isOnClass}>On</button>
-                <button onClick={() => props.onClick(isOff)} className={isOffClass}>Off</button>
-            </div>
-        </>
+        <div>
+            <div style={onStyle} onClick={() => props.onChange(true)}>On</div>
+            <div style={offStyle} onClick={() => props.onChange(false)}>Off</div>
+            <div style={indicatorStyle}></div>
+        </div>
     );
 };
