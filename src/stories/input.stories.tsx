@@ -1,5 +1,6 @@
 import React, {ChangeEvent, useRef, useState} from 'react';
 import {Story, Meta} from '@storybook/react';
+import { action } from '@storybook/addon-actions';
 
 
 export default {
@@ -35,8 +36,12 @@ ControlledInputWithFixedValue.args = {
     value: 'it-incubator'
 }
 
-// export const Primary = Template.bind({});
-// Primary.args = {
-//     primary: true,
-//     label: 'Button',
-// };
+export const ControlledInput = () => {
+    const [parentValue, setParentValue] = useState('');
+    const onInputChange = (e: ChangeEvent<HTMLInputElement>)=> {
+        setParentValue(e.currentTarget.value)
+    }
+
+    return <input value={parentValue} onChange={onInputChange}/>
+};
+
