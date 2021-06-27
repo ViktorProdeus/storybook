@@ -13,20 +13,27 @@ function App() {
     let [accordionCollapsed, setAccordionCollapsed] = useState<boolean>(false);
     let [switchOn, setSwitchOn] = useState<boolean>(true);
     let [switchOnUnControlled, setSwitchOnUnControlled] = useState<boolean>(false);
+    let items = [{title: 'Dimych', value: 1}, {title: 'Valera', value: 2}, {title: 'Ignat', value: 3}, {
+        title: 'Viktor',
+        value: 4
+    },]
+    let onItemClick = (value: any) => alert(`I am user ${value}`);
 
     return (
         <div className={'wrapper'}>
             <Accordion
+                onItemClick={onItemClick}
                 titleValue={"-- Menu --"}
                 collapsed={accordionCollapsed}
                 onClick={setAccordionCollapsed}
+                items={items}
             />
             <Rating value={ratingValue} onClick={setRatingValue}/>
             <OnOff on={switchOn} onChange={setSwitchOn}/>
 
-            <UnControlledOnOff onChange={setSwitchOnUnControlled} /> {switchOnUnControlled.toString()}
+            <UnControlledOnOff onChange={setSwitchOnUnControlled}/> {switchOnUnControlled.toString()}
             <UnControlledAccordion titleValue={'-- UnControlledAccordion --'}/>
-            <UnControlledRating onChange={()=> setRatingValue}/>
+            <UnControlledRating onChange={() => setRatingValue}/>
         </div>
     )
 }

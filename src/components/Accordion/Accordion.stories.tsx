@@ -2,7 +2,8 @@ import React, {useState} from 'react';
 import {action} from '@storybook/addon-actions';
 import {Story, Meta} from "@storybook/react";
 import Accordion, {AccordionPropsType} from "./Accordion";
-const getCategoryObj = (categoryName: 'Color'| 'Event' | 'Main') => ({
+
+const getCategoryObj = (categoryName: 'Color' | 'Event' | 'Main') => ({
     table: {
         category: categoryName
     }
@@ -26,19 +27,26 @@ export default {
 
 const Template: Story<AccordionPropsType> = (args) => <Accordion {...args}  />;
 const callback = action('Accordion change event fired');
+const itemCallback = action('Some item was clicked');
 
 export const MenuCollapsedMode = Template.bind({});
 MenuCollapsedMode.args = {
     titleValue: '-- Menu --',
     collapsed: true,
-    onClick: callback
+    onClick: callback,
+    items: []
 };
 
 export const UsersUnCollapsedMode = Template.bind({});
 UsersUnCollapsedMode.args = {
     titleValue: '-- Users --',
     collapsed: false,
-    onClick: callback
+    onClick: callback,
+    onItemClick: itemCallback,
+    items: [{title: 'Dimych', value: 1}, {title: 'Valera', value: 2}, {title: 'Ignat', value: 3}, {
+        title: 'Viktor',
+        value: 4
+    },]
 };
 
 export const ModeChanging: Story<AccordionPropsType> = (args) => {
@@ -47,6 +55,11 @@ export const ModeChanging: Story<AccordionPropsType> = (args) => {
 };
 ModeChanging.args = {
     titleValue: '-- Users --',
+    onItemClick: itemCallback,
+    items: [{title: 'Dimych', value: 1}, {title: 'Valera', value: 2}, {title: 'Ignat', value: 3}, {
+        title: 'Viktor',
+        value: 4
+    },]
 };
 
 
